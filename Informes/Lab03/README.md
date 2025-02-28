@@ -6,15 +6,15 @@ Gómez Romero, Néstor Javier negomezr@unal.edu.co
 
 ## Introducción
 
-Uno de los principales retos durante el aprendizaje de la lógica digital se centra en el conocimiento de obtener datos y convertirlos a requerimiento del diseño. Por eso esta practica es fundamental para apropiarse de conceptos básicos tanto en programación con lenguaje descriptivo de hardware y de módulos ADC y como se usan en conjunto con una FPGA.
+Uno de los principales retos durante el aprendizaje de la lógica digital se centra en el conocimiento de obtener datos y convertirlos a requerimiento del diseño. Por eso esta práctica es fundamental para apropiarse de conceptos básicos tanto en programación con lenguaje descriptivo de hardware y de módulos ADC y como se usan en conjunto con una FPGA.
 
-## Desarrollo de la practica
+## Desarrollo de la práctica
 
 ### Dominio comportamental
 
 ![image.png](Lab03/image.png)
 
-Podemos dividir en 3 grandes subcapas la practica (analógica, conversión y digital) de la subcapa digital se encarga el circuito analógico que gracias a componentes transforma la señal AC de 110v a 5v los cuales se encarga de convertir el ADC para al final enviar la información de 8 bits en paralelo a la fpga que se encarga de la subcapa digital para multiplexar los datos en unidades, decenas y centenas que serian impresas respectivamente en displays 7 segmentos.
+Podemos dividir en 3 grandes subcapas la práctica (analógica, conversión y digital) de la subcapa digital se encarga el circuito analógico que gracias a componentes transforma la señal AC de 110v a 5v los cuales se encarga de convertir el ADC para al final enviar la información de 8 bits en paralelo a la FPGA que se encarga de la subcapa digital para multiplexar los datos en unidades, decenas y centenas que serían impresas respectivamente en displays 7 segmentos.
 
 Código test_display:
 
@@ -182,7 +182,7 @@ module adc_to_display (
 endmodule
 ```
 
-El segundo modulo es adc_to_display en el cual guardamos todas las constantes correspondientes a cada número en el 7 segmentos, además este modulo se encarga de recibir la escritura de datos proveniente de test_display y multiplexarla para enviarla a los 7 segmentos.
+El segundo módulo es adc_to_display en el cual guardamos todas las constantes correspondientes a cada número en el 7 segmentos, además este modulo se encarga de recibir la escritura de datos proveniente de test_display y multiplexarla para enviarla a los 7 segmentos.
 
 Código divFreq.v:
 
@@ -218,7 +218,7 @@ endmodule
 
 ```
 
-El ultimo modulo corresponde a el divisor de frecuencia que permite convertir los 50MHz a 10KHz, necesarios para el correcto funcionamiento del reloj del ADC.
+El último módulo corresponde al divisor de frecuencia que permite convertir los 50MHz a 10KHz, necesarios para el correcto funcionamiento del reloj del ADC.
 
 ### Dominio estructural
 
@@ -228,7 +228,7 @@ En el dominio estructural encontramos primeramente la conexión física de los d
 
 ![image.png](Lab03/image%202.png)
 
-En el diagrama de caja negra, obsevamos 2 entradas, la cual corresponde a la escritura de datos recibida por el ADC y el clock interno de la fpga, esta data llega adc to display donde se multiplexara, clock conecta a las siguientes dos cajas negras, una para el divisor de frecuencia y otra que también entra al multiplexado que esta sincronizado con el reloj. Por ultimo tenemos 3 salidas, Seg que hace referencia a los 8 leds del 7 segmentos (contando el punto) y que me indicara que leds han de encenderse para mostrar el número deseado. Selector, selecciona que 7 segmentos mostrara el número requerido para diferenciar unidades, decenas y centenas, por ultimo clk_out es la frecuencia dividida para llegar a 10KHz y enviarlo al clock del ADC.
+En el diagrama de caja negra, obsevamos 2 entradas, la cual corresponde a la escritura de datos recibida por el ADC y el clock interno de la FPGA, esta data llega adc to display donde se multiplexara, clock conecta a las siguientes dos cajas negras, una para el divisor de frecuencia y otra que también entra al multiplexado que esta sincronizado con el reloj. Por último tenemos 3 salidas, Seg que hace referencia a los 8 leds del 7 segmentos (contando el punto) y que me indicara que leds han de encenderse para mostrar el número deseado. Selector, selecciona que 7 segmentos mostrara el número requerido para diferenciar unidades, decenas y centenas, por último clk_out es la frecuencia dividida para llegar a 10KHz y enviarlo al clock del ADC.
 
 RTL general
 
@@ -247,7 +247,7 @@ A continuación se adjunta el video de la demostración de su funcionamiento
 
 ## Análisis de resultados
 
-Durante la practica se encontraron varios desafíos tales como la presencia de ruido en el circuito. Tambien, como una mala interpretación del datasheet para la selección del canal. Hubieron resultados satisfactorios, teniendo un valor de 4 cuando no estaba conectado el transformador y de 172 cuando se conecta a la corriente.
+Durante la practica se encontraron varios desafíos tales como la presencia de ruido en el circuito. También, una mala explicación del datasheet para la selección del canal lo que causó que no funcionara correctamente el circuito por varias semanas, mientras se trataba de hallar la causa del problema. Hubo resultados satisfactorios, teniendo un valor de 4 cuando no estaba conectado el transformador y de 172 cuando se conecta a la corriente.
 
 ## Referencias
 
