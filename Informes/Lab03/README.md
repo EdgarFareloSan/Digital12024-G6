@@ -243,7 +243,7 @@ rtl adc_to_display.v
 ## Resultados
 
 A continuación se adjunta el video de la demostración de su funcionamiento
-[https://youtu.be/cmZQxzgxz-I](Video informe del laboratorio 3 - Gómez, Farelo)
+[Video informe del laboratorio 3 - Gómez, Farelo](https://youtu.be/cmZQxzgxz-I)
 
 ## Análisis de resultados
 
